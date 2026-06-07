@@ -30,9 +30,9 @@ const ChatPage = () => {
     setInput("");
   };
   return (
-    <div className="flex flex-col h-screen">
-      <div className="flex-1 overflow-hidden flex flex-col">
-        <Conversation className="flex-1">
+    <div className="max-w-4xl p-6 mx-auto relative size-full h-[calc(100vh)]">
+      <div className="flex flex-col h-full">
+        <Conversation className="h-full">
           <ConversationContent>
             {messages.map((message) => (
               <div key={message.id}>
@@ -60,22 +60,18 @@ const ChatPage = () => {
           </ConversationContent>
           <ConversationScrollButton />
         </Conversation>
-      </div>
-      <div className="shrink-0 border-t bg-background">
-        <div className="max-w-4xl mx-auto p-4">
-          <PromptInput onSubmit={handleSubmit}>
-            <PromptInputBody>
-              <PromptInputTextarea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                className="mt-0"
-              />
-            </PromptInputBody>
-            <PromptInputTools>
-              <PromptInputSubmit />
-            </PromptInputTools>
-          </PromptInput>
-        </div>
+        <PromptInput className="mt-4" onSubmit={handleSubmit}>
+          <PromptInputBody>
+            <PromptInputTextarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="mt-0"
+            />
+          </PromptInputBody>
+          <PromptInputTools>
+            <PromptInputSubmit />
+          </PromptInputTools>
+        </PromptInput>
       </div>
     </div>
   );
